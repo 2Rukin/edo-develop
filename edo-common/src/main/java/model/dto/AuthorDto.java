@@ -40,7 +40,7 @@ public class AuthorDto implements Serializable {
 
     @ApiModelProperty(value = "номер телефона автора (мобильный)")
     private String mobilePhone;
-    @Email
+    @Email(message = "полная хрень")
     @ApiModelProperty(value = "адрес электронной почты автора")
     private String email;
 
