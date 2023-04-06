@@ -1,0 +1,14 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  dashboard:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info

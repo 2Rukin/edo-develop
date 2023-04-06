@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: edo-scheduler
+
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+integration:
+  url:
+    employee: https://mocki.io/v1/a05c60fa-6f91-46a6-813f-7aa703f56201
+
+interval: PT30M
+
+

@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS employee
+    ALTER COLUMN external_id TYPE VARCHAR(20);

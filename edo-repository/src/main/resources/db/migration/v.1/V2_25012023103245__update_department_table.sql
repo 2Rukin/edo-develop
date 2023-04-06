@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS department
+    ALTER COLUMN external_id TYPE VARCHAR(20);

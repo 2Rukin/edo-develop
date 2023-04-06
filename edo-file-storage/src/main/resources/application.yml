@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: edo-file-storage
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 128MB
+      max-request-size: 128MB
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+minio:
+  endpoint: http://127.0.0.1:9000
+  username: admin
+  password: password
+  bucket-name: my-bucketname
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
