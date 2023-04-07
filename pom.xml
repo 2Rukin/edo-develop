@@ -24,6 +24,7 @@
         <module>edo-service</module>
         <module>edo-rest</module>
         <module>edo-repository</module>
+        <module>edo-swagger-ui</module>
     </modules>
 
     <properties>
