@@ -12,7 +12,7 @@ spring:
     username: guest
     password: guest
 server:
-  port: 0
+  port: 61865
 eureka:
   client:
     serviceUrl:

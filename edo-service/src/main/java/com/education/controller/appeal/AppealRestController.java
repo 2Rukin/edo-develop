@@ -1,6 +1,7 @@
 package com.education.controller.appeal;
 
 import com.education.service.appeal.AppealService;
+import com.education.util.Appeal.AppealCustomException;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -81,5 +82,10 @@ public class AppealRestController {
         var appealDto = appealService.findById(id);
         log.info("Response from database: {}", appealDto);
         return new ResponseEntity<>(appealDto, HttpStatus.OK);
+    }
+    @ExceptionHandler(AppealCustomException.class)
+    private ResponseEntity<String> validUserException(AppealCustomException ex) {
+        log.warn(ex.toString());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.toString());
     }
 }

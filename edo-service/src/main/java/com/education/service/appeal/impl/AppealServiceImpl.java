@@ -4,6 +4,7 @@ import com.education.service.appeal.AppealService;
 import com.education.service.author.AuthorService;
 import com.education.service.filePool.FilePoolService;
 import com.education.service.question.QuestionService;
+import com.education.util.Appeal.Validator;
 import com.education.util.URIBuilderUtil;
 import lombok.AllArgsConstructor;
 import model.constant.Constant;
@@ -69,6 +70,7 @@ public class AppealServiceImpl implements AppealService {
      */
     @Override
     public AppealDto save(AppealDto appealDto) {
+        Validator.getValidateAppeal(appealDto);
         // Назначения статуса и времени создания
         if(appealDto.getAppealsStatus()==null) {
             appealDto.setAppealsStatus(NEW_STATUS);

@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
@@ -79,15 +80,11 @@ public class AppealRestController {
     }
 
     @ApiOperation(value = "Добавляет новую строку таблицы Appeal", notes = "Строка в Appeal должна существовать")
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveAppeal(@Valid @RequestBody AppealDto appealDto, BindingResult result ) {
-        if (result.hasErrors()) {
-            List<String> errors = new ArrayList<>();
-            for (FieldError error : result.getFieldErrors()) {
-                errors.add(error.getDefaultMessage());
-            }
-            return ResponseEntity.badRequest().body(errors);
-        }
+    public ResponseEntity<AppealDto> saveAppeal(@Valid @RequestBody AppealDto appealDto ) {
+
+
         log.info("Creating appeal");
         var appeal = appealService.save(APPEAL_MAPPER.toEntity(appealDto));
         log.info("Creating appeal {}, success!", appeal);
@@ -111,5 +108,10 @@ public class AppealRestController {
         var appeal = appealService.findAppealByQuestionsId(id);
         log.info("Appeal: {}", appeal);
         return new ResponseEntity<>(APPEAL_MAPPER.toDto(appeal), HttpStatus.OK);
+    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    private ResponseEntity<String> validUserException(MethodArgumentNotValidException ex) {
+        log.warn(ex.toString());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.toString());
     }
 }

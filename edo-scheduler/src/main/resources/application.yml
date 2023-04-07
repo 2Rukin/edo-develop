@@ -3,7 +3,7 @@ spring:
     name: edo-scheduler
 
 server:
-  port: 0
+  port: 62557
 eureka:
   client:
     serviceUrl:

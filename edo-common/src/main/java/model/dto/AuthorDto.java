@@ -3,6 +3,7 @@ package model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import model.enum_.Employment;
 
@@ -22,7 +23,7 @@ public class AuthorDto implements Serializable {
 
     @ApiModelProperty(value = "id автора")
     private Long id;
-
+@NotNull
     @ApiModelProperty(value = "имя автора")
     private String firstName;
 

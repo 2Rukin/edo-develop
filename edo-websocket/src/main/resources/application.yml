@@ -2,7 +2,7 @@ spring:
   application:
     name: edo-websocket
 server:
-  port: 0
+  port: 61876
 eureka:
   client:
     serviceUrl:

@@ -14,7 +14,7 @@ spring:
           starttls:
             enable: true
 server:
-  port: 0
+  port: 61786
 eureka:
   client:
     serviceUrl:
